@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="../dist/style.css">
 </head>
 <body class="dark">
     <header class="sticky top-0 h-[5rem] bg-[#0000009f] z-50">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div>
-                <button class="userIcon absolute" id="logIn" onclick="toggleLog()">
+                <button class="userIcon absolute">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </button>
                 <button class="userIcon cartIcon absolute right-1">
@@ -44,61 +44,46 @@
         </div>
     </header>
     <main>
-        <div id="logOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50">
-            <div id="logFormContainer" class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 py-8 px-11 rounded-3xl">
-                <form id="loginForm">
-                    <div class="flex flex-col items-center gap-6">
-                        <h2 class="text-center font-medium text-3xl mb-3 text-[--black-50]">Log In</h2>
-                        <div class="logContainer relative">
-                            <input class="w-[200px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="text" id="username" name="username" required>
-                            <label for="username" class="absolute top-[.4rem] left-3 text-lg">User Name</label>
-                        </div>
-                        <div class="logContainer relative mb-5">
-                            <input class="w-[200px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="password" id="password" name="password" required>
-                            <label for="password" class="absolute top-[.4rem] left-3 text-lg">Password</label>
-                            <p class="hidden w-[250px] text-red-600 absolute top-[3.4rem] -left-1 text-[.7rem]" id="passVerify">Enter a valid User Name or Password</p>
-                        </div>
-                        <button class="text-xl mainBtn" type="button" onclick="validateLogin()">Login</button>
-                        <button class="cancelBtn text-xl" type="button" onclick="closeLog()"><span class="text">Close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
-                    </div>
-                </form>
-            </div>
+        <div class="imgDivClip">
+            <img src="../assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
         </div>
-        <section id="headerAndNav">
-            <div class="imgDivClip">
-                <img src="./assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
-            </div>
-            <div>
-                <nav>
-                    <ul class="flex flex-wrap justify-evenly w-full">
-                        <li class="transform xl:-translate-y-24 xl:rotate-12 2xl:rotate-6"><a href="">example</a></li>
-                        <li class="transform xl:-translate-y-11 xl:rotate-12 2xl:rotate-6"><a href="">example</a></li>
-                        <li><a href="./index.html">Home</a></li>
-                        <li class="transform xl:-translate-y-12 xl:-rotate-12 2xl:-rotate-6"><a href="./pages/collections.html">Collections</a></li>
-                        <li class="transform xl:-translate-y-[6.7rem] xl:-rotate-12 2xl:-rotate-6"><a href="./pages/contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-        <section id="mainHightLight">
-            <div class="bgImageDiv">
-                <div class="mt-52 relative mainBgImage rounded-3xl">
-                    <h1 class="text-8xl text-center absolute top-20 left-14 text-wrap w-10 leading-[8rem] text-[--black-700] middleTitles">New Collections available</h1>
-                </div>
-            </div>
-        </section>
-        <section id="topSellers">
-            <div class="mt-60">
-                <h2 class="text-center text-6xl middleTitles">Top sellers</h2>
-                <div>
-    
-                </div>
+        <div>
+            <nav>
+                <ul class="flex flex-wrap justify-evenly w-full">
+                    <li class="transform xl:-translate-y-24 xl:rotate-12 2xl:rotate-6"><a href="">example</a></li>
+                    <li class="transform xl:-translate-y-11 xl:rotate-12 2xl:rotate-6"><a href="">example</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="transform xl:-translate-y-12 xl:-rotate-12 2xl:-rotate-6"><a href="./collections.html">Collections</a></li>
+                    <li class="transform xl:-translate-y-[6.7rem] xl:-rotate-12 2xl:-rotate-6"><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <section class="flex justify-center items-center mt-96">
+            <div class="formContainer rounded-3xl relative w-fit gap-40 box-border">
+                <form action="" name="JAcontact" method="POST" netlify class="">
+                    <h2 class=" absolute left-2/4 -translate-x-2/4 -translate-y-2/4">Log In</h2>
+                    <div class="formGroup">
+                        <input required name="name" id="name" type="text">
+                        <label for="name">Name </label>
+                    </div>
+                    <div class="formGroup">
+                        <input required name="company" id="comany" type="text">
+                        <label for="company">Company Name</label>
+                    </div>
+                    <div class="formGroup">
+                        <input required name="email" id="email" type="text">
+                        <label for="email">Email</label>
+                    </div>
+                    <button class="formSubmitBtn">
+                        Submit
+                    </button>
+                </form>
             </div>
         </section>
     </main>
     <footer>
 
     </footer>
-    <script defer src="./js/main.js"></script>
+    <script defer src="../js/main.js"></script>
 </body>
 </html>
