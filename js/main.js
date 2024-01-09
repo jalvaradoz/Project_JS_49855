@@ -1,22 +1,27 @@
 /*--------------Theme Switch ---------------*/
 
-const themeSwitch = document.getElementById('themeSwitch');
-const body = document.body;
+const themeSwitch = document.getElementById('themeSwitch')
+const body = document.body
+const theme = localStorage.getItem('theme')
+const checkboxChecked = localStorage.getItem('checkboxChecked')
 
 themeSwitch.addEventListener('change', () => {
     if (body.classList.contains('dark')) {
-        body.classList.replace('dark', 'light');
-        localStorage.setItem('theme', 'light');
+        body.classList.replace('dark', 'light')
+        localStorage.setItem('theme', 'light')
+        localStorage.setItem('checkboxChecked', 'checked')
     } else {
-        body.classList.replace('light', 'dark');
-        localStorage.setItem('theme', 'dark');
+        body.classList.replace('light', 'dark')
+        localStorage.setItem('theme', 'dark')
+        localStorage.removeItem('checkboxChecked')
     }
-});
-
-const theme = localStorage.getItem('theme');
+})
 
 if (theme) {
     body.classList.add(theme);
+}
+if (checkboxChecked === 'checked') {
+    themeSwitch.checked = true;
 }
 
 
@@ -61,7 +66,7 @@ function validateLogin(){
             verify = false
         }
         if (attempt >= 3){
-            alert("You have exceeded 3 attempts, exiting now.")
+            alert("You have reached 3 attempts, exiting now.")
             verify = false
             closeLog()
             break
