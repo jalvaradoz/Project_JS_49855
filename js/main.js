@@ -8,21 +8,17 @@ const checkboxChecked = localStorage.getItem('checkboxChecked')
 themeSwitch.addEventListener('change', () => {
     if (body.classList.contains('dark')) {
         body.classList.replace('dark', 'light')
-        localStorage.setItem('theme', 'light')
-        localStorage.setItem('checkboxChecked', 'checked')
+        theme = 'light'
     } else {
         body.classList.replace('light', 'dark')
-        localStorage.setItem('theme', 'dark')
-        localStorage.removeItem('checkboxChecked')
+        theme = 'dark'
     }
 })
 
 if (theme) {
     body.classList.add(theme);
 }
-if (checkboxChecked === 'checked') {
-    themeSwitch.checked = true;
-}
+themeSwitch.checked = checkboxChecked === 'checked';
 
 
 
@@ -58,7 +54,6 @@ function validateLogin(){
             console.log("Password: " + password)
             verify = false
             closeLog()
-            break
         }
         if(user !== user1 || password !== passUser1){
             attempt++
@@ -67,9 +62,8 @@ function validateLogin(){
         }
         if (attempt >= 3){
             alert("You have reached 3 attempts, exiting now.")
-            verify = false
             closeLog()
-            break
+            verify = false
         }
     } while (verify)
 }
