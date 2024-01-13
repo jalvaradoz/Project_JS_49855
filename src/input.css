@@ -12,7 +12,7 @@
     --cursive: 'Almendra SC', serif;
 
 
-    /* --Main Colors, Dark:  */
+    /* --Main Colors--  */
     --black-50: #f6f6f6;
     --black-100: #e7e7e7;
     --black-200: #d1d1d1;
@@ -161,7 +161,6 @@ body{
 /*------ header ------*/
 
 .themeSwitch{
-    -webkit-appearance: none;
     box-shadow: var(--shadow);
     outline: none;
 }
@@ -244,9 +243,28 @@ body{
 
 /*-----form overlay------------------*/
 
-#logOverlay {
+#logOverlay, #cartOverlay {
     background-color: rgba(0, 0, 0, 0.7);
     animation: overAnimation .5s linear;
+}
+#cartOverlay{
+    .mainBtn {
+        width: 180px;
+        height: 50px;
+        position: absolute;
+    }
+    .cancelBtn {
+        width: 150px;
+        height: 50px;
+        .icon {
+            transform: translateX(50px) translateY(0);
+        }
+        &:hover {
+            .icon {
+                transform: translateX(0);
+            }
+        }
+    }
 }
 #logFormContainer {
     background-color: var(--black-900);
@@ -292,7 +310,18 @@ body{
         }
     }
 }
-
+#cart{
+    border-top-left-radius: 4rem;
+    border-bottom-left-radius: 4rem;
+    animation: cartAnimation .5s linear;
+    h2{
+        font-family: var(--cursive);
+    }
+}
+@keyframes cartAnimation {
+    0%{right: -100%;}
+    100%{right:0;}
+}
 
 
 /*------main-------- */
