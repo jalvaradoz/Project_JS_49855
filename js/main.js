@@ -20,53 +20,11 @@ if (theme) {
 }
 themeSwitch.checked = checkboxChecked === 'checked';
 
-/* let overlay = document.getElementById('logOverlay')
-let cart = document.getElementById('cartOverlay')
-
-function toggleCart(){
-    cart.style.display = "block"
-}
-function closeCart(){
-    cart.style.display = 'none'
-}
-function toggleLog() {
-    overlay.style.display = "block"
-}
-function closeLog(){
-    overlay.style.display = "none"
-} */
-
-
 
 
 /*------------- simulador interactivo!!! ---------------- */
 
 
-/* function validateLogin() {
-    let user1 = "joeyalvarado"
-    let passUser1 = "12345"
-    let attempt = 0
-
-    while (attempt < 3) {
-        let user = prompt("Ingrese su nombre de usuario:").toLowerCase()
-        let password = prompt("Ingrese su contraseña:")
-
-        if (user === user1 && password === passUser1) {
-            alert("¡Bienvenido, " + user + "!")
-            console.log("Usuario: " + user)
-            console.log("Contraseña: " + password)
-            return
-        } else if (user === "" || password === "") {
-            alert("Por favor, ingrese tanto el nombre de usuario como la contraseña.")
-        } else {
-            attempt++
-            alert("Usuario o contraseña incorrectos. Te quedan " + (3 - attempt) + " intentos.")
-        }
-    }
-    if (attempt >= 3) {
-        alert("Has alcanzado 3 intentos, saliendo ahora.")
-    }
-} */
 function validateLogin() {
     let user1 = "joeyalvarado"
     let passUser1 = "12345"
@@ -78,14 +36,14 @@ function validateLogin() {
 
         if (user === user1 && password === passUser1) {
             alert("Welcome, " + user + "!")
-            console.log("Usuario: " + user)
-            console.log("Contraseña: " + password)
+            console.log("User: " + user)
+            console.log("Password: " + password)
             return
         } else if (user === "" || password === "") {
             alert("Enter a valid user name or password.")
             attempt++
         } else {
-            alert("User name or password incorrect, you have " + attempt + " missed attempts.");
+            alert("User name or password incorrect, you have " + attempt + " missed attempts.")
         }
     }
     if (attempt = 3) {
@@ -94,6 +52,5 @@ function validateLogin() {
 }
 
 validateLogin()
-
 /*---------------------------------------------------------------*/
 
