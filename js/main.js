@@ -16,74 +16,103 @@ themeSwitch.addEventListener('change', () => {
 })
 
 if (theme) {
-    body.classList.add(theme);
+    body.classList.add(theme)
 }
-themeSwitch.checked = checkboxChecked === 'checked';
+themeSwitch.checked = checkboxChecked === 'checked'
 
 
 
-/*------------- simulador interactivo!!! ---------------- */
-let overlay = document.getElementById('logOverlay')
-let cart = document.getElementById('cartOverlay')
+/*---------------------------------------------------------------*/
 
-function toggleCart(){
-    cart.style.display = "block"
-}
-function closeCart(){
-    cart.style.display = 'none'
-}
-function toggleLog() {
-    overlay.style.display = "block"
-}
-function closeLog(){
-    overlay.style.display = "none"
-}
 
-/* let verify = true
-let attempt = 0
 
-function validateLogin(){
-    let user1 = "joeyalvarado"
-    let passUser1 = "12345"
-    let user = document.getElementById('username').value.toLowerCase()
-    let password = document.getElementById('password').value
-    let verifyUser = document.getElementById('passVerify')
 
-    do {
-        if (user === "" || password === ""){
-            verifyUser.style.display = "block"
+/*---------------Segunda preentrega----------------*/
+
+const users = [
+    {name: "admin", password: "admin1"},
+    {name: "joey", password: "123456"},
+]
+
+let signUp = function (){
+    
+    let signUpCicle = true 
+    
+    do{
+        class userBuilder{
+            constructor (name,password){
+                this.name = name
+                this.password = password
+            }
+        }
+        
+        let userName = prompt("Enter your first name")
+        
+        while(users.some( (x) => x.name === userName)){
+            alert("User Name already exists, provide another one")
+            userName = prompt("Enter your first name")
+        }
+        while(userName === null){
+            if (confirm("Are you sure you want to cancel?")) {
+                alert("Operation cancelled, returning to main screen")
+                break
+            }
+            userName = prompt("Enter your first name")
+        }
+        if(userName === null){
             break
         }
-        if (user === user1 && password === passUser1){
-            alert("Welcome, " + user + " !")
-            console.log("User: " + user)
-            console.log("Password: " + password)
-            verify = false
-            closeLog()
+        while(userName.length === 0){
+            alert("Please enter a valid user name")
+            userName = prompt("Enter your first name")
         }
-        if(user !== user1 || password !== passUser1){
-            attempt++
-            alert("Invalid user or password. You have " + attempt + " missed attempts")
-            verify = false
+        userName = userName.toLowerCase().trim()
+    
+        let userPassword = prompt("Enter your Password, at least 5 characters long")
+        
+        while(userPassword === null){
+            if (confirm("Are you sure you want to cancel?")) {
+                alert("Operation cancelled, returning to main screen")
+                break
+            }
+            userPassword = prompt("Enter your Password, at least 5 characters long")
         }
-        if (attempt >= 3){
-            alert("You have reached 3 attempts, exiting now.")
-            closeLog()
-            verify = false
+        if(userPassword === null){
+            break
         }
-    } while (verify)
-} */
+        while(userPassword.length < 5){
+            alert("Please enter a valid password, needs to be at least 5 characters long")
+            userPassword = prompt("Enter your Password")
+        }
+        userPassword = userPassword.trim()
+    
+        let newUser = new userBuilder(userName, userPassword)
+    
+        users.push(newUser)
+    
+        alert("Your Account has been created!\n\nUser: " + userName + "\n\nPassword: " + userPassword)
+    
+        if(confirm("Would you like to sign in now?")){
+            if(logIn()){
+                return true
+            }
+        }else{
+            return true
+        }
+    }while(signUpCicle)
+}
 
-function validateLogin() {
-    let user1 = "joeyalvarado"
-    let passUser1 = "12345"
-    let attempt
 
-    for (attempt = 1; attempt <= 3; attempt++) {
-        let user = prompt("Enter User name:")
+
+let logIn = function (){
+    let attempt = 1
+    let verify = true
+    do{
+        let user = prompt("LOG IN\n\nRemember: you only have 3 attempts to log In\n\nPlease enter User name:")
+
         while (user === null) {
             if (confirm("Are you sure you want to cancel?")) {
-                alert("Operation cancelled");
+                alert("Operation cancelled, returning to main screen")
                 break
             }
             user = prompt("Enter User name:")
@@ -91,11 +120,18 @@ function validateLogin() {
         if (user === null) {
             break
         }
-        user = user.toLowerCase()
+        while (user.length === 0) {
+            alert("Enter a valid user name")
+            user = prompt("Enter User name:")
+        }
+
+        user = user.toLowerCase().trim()
+
         let password = prompt("Enter Password:")
+
         while (password === null) {
             if (confirm("Are you sure you want to cancel?")) {
-                alert("Operation cancelled");
+                alert("Operation cancelled, returning to main screen")
                 break
             }
             password = prompt("Enter Password:")
@@ -103,22 +139,91 @@ function validateLogin() {
         if (password === null) {
             break
         }
-        if (user === user1 && password === passUser1) {
-            alert("Welcome, " + user + "!")
-            console.log("User: " + user)
-            console.log("Password: " + password)
-            return
-        }else if (user === "" || password === "") {
-            alert("Enter a valid user name or password.")
-            attempt++
-        } else {
-            alert("User name or password incorrect, you have " + attempt + " missed attempts.")
+        while (password.length === 0) {
+            alert("Enter a valid user password")
+            password = prompt("Enter Password:")
         }
-    }
-    if (attempt >= 3) {
-        alert("You've reached 3 attempts, exiting now.");
-    }
+
+        for (let i = 0; i < users.length; i++) {
+            if (user === users[i].name && password === users[i].password) {
+                alert("Welcome, " + user + " !")
+                console.log("User: " + user)
+                console.log("Password: " + password)
+                verify = false
+                return true
+            }
+        }
+        if(user.length === 0 || password.length === 0) {
+            break
+        }else{
+            alert("User name or password incorrect, you have " + attempt + " missed attempts.")
+            attempt++
+        }
+        if (attempt > 3) {
+            alert("You've reached 3 attempts, exiting now.")
+            verify = false
+            return true
+        }
+    }while(verify)
+}
+
+function validateLogin() {
+
+    let verifyLog = true
+    do{
+        let welcome = prompt("                                    Welcome to Alter Jewelry \n\n Please enter below the NUMBER of the action you'd like to follow:\n\n 1. Log In \n 2. Sign Up \n\n")
+
+        if (welcome === null) {
+            break
+        }else if(welcome == 1){
+            if(logIn()){
+                verifyLog = false
+            }
+        }else if(welcome == 2){
+            if(signUp()){
+                verifyLog = false
+            }
+        }else {
+            alert("Please enter a valid NUMBER")
+        }
+    }while(verifyLog)
 }
 
 validateLogin()
+
+
 /*---------------------------------------------------------------*/
+
+let lista = [
+    {marca:"lenovo", precio: 350, stock: 5},
+    {marca:"samsung", precio: 500, stock: 10},
+    {marca:"mac", precio: 750, stock: 1},
+]
+
+function filtrarProducto(){
+    let palabraClave= prompt("ingresa producto que queres buscar").trim()
+    let resultado = lista.filter( (x)=> x.marca.includes(palabraClave))
+    if(resultado.length >0){
+        alert("Existe el producto " + palabraClave)
+        console.table(resultado)
+    }else{
+        alert("no se encontro ninguna conincidencia con " + palabraClave)
+        if(confirm("desea agregar el producto?")){
+            let establecerPrecio = parseFloat(prompt("Ingresa el precio del producto"))
+            while(isNaN(establecerPrecio)){
+                alert("Ingresa el monto en numeros, puede contener decimales")
+                establecerPrecio = parseFloat(prompt("Ingresa el precio del producto"))
+            }
+            let establecerStock = parseInt(prompt("Ingresa el stock para el producto"))
+            while(isNaN(establecerStock)){
+                alert("Ingresa el monto en numeros, NO puede contener decimales")
+                establecerStock = parseInt(prompt("Ingresa el stock para el producto"))
+            }
+            let agregar = {marca: palabraClave, precio: establecerPrecio, stock:establecerStock}
+            lista.push(agregar)
+            console.table(lista)
+        }else{
+            return false
+        }
+    }
+}

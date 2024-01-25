@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alter Jewelry | Alternative Style</title>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>Alter Jewelry</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="../dist/style.css">
 </head>
 <body class="dark">
     <header class="sticky top-0 h-[5rem] bg-[#0000009f] z-50">
@@ -19,7 +19,7 @@
             <div class="wrapper absolute left-5">
                 <input id="themeSwitch" type="checkbox" name="checkbox" class="themeSwitch relative w-[70px] h-[31px] appearance-none bg-[color:var(--black-950)] bg-cover bg-no-repeat transition-[background-image] duration-[0.7s] ease-[ease-in-out] cursor-pointer overflow-hidden  m-0 rounded-[25px] checked:bg-[rgb(0,195,255)] checked:bg-cover checked:transition-[background-image] checked:duration-[1s] checked:ease-[ease-in-out] checked:after:animate-[on_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] checked:after:shadow-[inset_-5px_-5px_4px_rgba(53,53,53,0.3)] checked:before:content-[''] checked:before:w-[15px] checked:before:h-[15px] checked:before:absolute checked:before:origin-[53px_10px] checked:before:bg-transparent checked:before:shadow-[5px_-1px_0px_#fff] checked:before:blur-none checked:before:animate-[sun_0.5s_forwards_ease] checked:before:rounded-[50%] checked:before:left-2.5 checked:before:top-[5px] after:content-[''] after:w-5 after:h-5 after:bg-white after:absolute after:translate-x-0 after:animate-[off_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] after:shadow-[inset_5px_-5px_4px_rgba(53,53,53,0.3)] after:rounded-[50%] after:left-2 after:top-[5px] before:content-[''] before:w-[15px] before:h-[15px] before:absolute before:blur-[1px] before:bg-[#f5daaa] before:shadow-[0px_0px_10px_#f5deb4,0px_0px_20px_#f5deb4,0px_0px_30px_#f5deb4,inset_0px_0px_2px_#efd3a3] before:origin-[53px_10px] before:animate-[moon_0.5s_forwards_ease] before:rounded-[50%] before:-left-10 before:top-[5px]">
             </div>
-            <a href="" class="absolute left-2/4 top-9 -translate-x-2/4 -translate-y-2/4 text-[color:var(--black-50)] [font-family:var(--cursive)] mainLogo sm:text-3xl md:text-5xl xl:text-6xl tracking-wider">Alter Jewelry</a>
+            <a href="../index.html" class="absolute left-2/4 top-9 -translate-x-2/4 -translate-y-2/4 text-[color:var(--black-50)] [font-family:var(--cursive)] mainLogo sm:text-3xl md:text-5xl xl:text-6xl tracking-wider">Alter Jewelry</a>
             <div class="absolute top-3 right-32">
                 <div class="input-wrapper flex items-center justify-center gap-[15px] relative">
                     <button class="icon flex items-center justify-center absolute cursor-pointer w-[50px] h-[50px] [outline:none] [pointer-events:painted] bg-transparent transition-[0.2s] duration-[linear] rounded-[2rem] right-0 hover:bg-[color:var(--black-400)] hover:shadow-[var(--box-black)] focus:border-[none]"> 
@@ -45,16 +45,16 @@
     </header>
     <main>
         <div id="logOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50">
-            <div id="logFormContainer" class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 py-8 px-9 md:px-28 rounded-3xl">
+            <div id="logFormContainer" class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 py-8 px-11 rounded-3xl">
                 <form id="loginForm">
                     <div class="flex flex-col items-center gap-6">
                         <h2 class="text-center font-medium text-3xl mb-3 text-[--black-50]">Log In</h2>
                         <div class="logContainer relative">
-                            <input class="w-[250px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="text" id="username" name="username" required>
+                            <input class="w-[200px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="text" id="username" name="username" required>
                             <label for="username" class="absolute top-[.4rem] left-3 text-lg">User Name</label>
                         </div>
                         <div class="logContainer relative mb-5">
-                            <input class="w-[250px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="password" id="password" name="password" required>
+                            <input class="w-[200px] h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="password" id="password" name="password" required>
                             <label for="password" class="absolute top-[.4rem] left-3 text-lg">Password</label>
                             <p class="hidden w-[250px] text-red-600 absolute top-[3.4rem] -left-1 text-[.7rem]" id="passVerify">Enter a valid User Name or Password</p>
                         </div>
@@ -62,71 +62,87 @@
                         <button class="cancelBtn text-xl" type="button" onclick="closeLog()"><span class="text">Close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
                         <div class="flex flex-col items-center">
                             <p class="text-[.8rem] mb-3">Don't have an account yet?</p>
-                            <a href="./pages/signup.html" class="text-sm text-blue-400 hover:text-blue-700">Sign Up</a>
+                            <a href="" class="text-sm text-blue-400 hover:text-blue-700">Sign Up</a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <div id="cartOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50 overflow-hidden">
+        <div id="cartOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50">
             <div id="cart" class="absolute top-8 sm:top-0 right-0 h-[90%] sm:h-full w-full sm:w-[450px] bg-[--bg]">
-                <h2 class="text-center text-4xl sm:text-5xl my-7 sm:ml-4">Shopping Cart</h2>
-                <div class="sm:ml-4 flex flex-col justify-between h-[88%] sm:h-[92%]">
-                    <div class="flex flex-col h-2/4 p-5 overflow-auto">
-                        </div>
-                        <div class="cartFooter min-h-fit">
-                            <div class="flex justify-between items-center p-10">
-                                <span>Subtotal</span>
-                                <span class="text-lg font-bold">price...</span>
-                            </div>
-                            <div class="flex flex-col gap-5 items-center w-full mb-10">
-                                <button type="button" class="bg-red-400 mainBtn rounded-3xl p-3">
-                                    Checkout
-                                </button>
-                                <button type="button" class="cancelBtn bg-green-400 rounded-3xl" onclick="closeCart()"><span class="text">Close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
-                            </div>
-                        </div>
+                <div class="sm:ml-4">
+                    <h2 class="text-center text-4xl sm:text-5xl mt-7">Shopping Cart</h2>
+                    <div class="my-4 mx-4 w-[90%] h-[55vh] sm:h-[80vh]">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur ab consectetur, porro iste deserunt, quas numquam eaque, neque fugiat ipsa quia a repudiandae consequatur accusantium at tempora voluptatem maiores?</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-evenly items-center h-[18vh] sm:h-max">
+                        <button type="button" class="bg-red-400 mainBtn rounded-3xl p-3">
+                            Checkout
+                        </button>
+                        <button type="button" class="cancelBtn bg-green-400 rounded-3xl" onclick="closeCart()"><span class="text">Close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
         <section id="headerAndNav">
             <div class="imgDivClip">
-                <img src="./assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
+                <img src="../assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
             </div>
             <div>
                 <nav>
                     <ul class="flex flex-wrap justify-evenly w-full">
                         <li class="-translate-y-24"><a href="">example</a></li>
                         <li class="-translate-y-11 -translate-x-5"><a href="">example</a></li>
-                        <li class="translate-x-[6.5px]"><a href="./index.html">Home</a></li>
+                        <li class="translate-x-[6.5px]"><a href="../index.html">Home</a></li>
                         <li class="-translate-y-12 translate-x-9"><a href="./pages/collections.html">Collections</a></li>
-                        <li class="-translate-y-[6.7rem]"><a href="./pages/contact.html">Contact</a></li>
+                        <li class="-translate-y-[6.7rem]"><a href="./contact.html">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </section>
-        <section id="mainHightLight">
-            <div class="bgImageDiv">
-                <div class="mt-52 relative mainBgImage rounded-3xl">
-                    <h1 class="text-8xl text-center absolute top-20 left-14 text-wrap w-10 leading-[8rem] text-[--black-700] middleTitles">New Collections available</h1>
-                </div>
-            </div>
-        </section>
-        <section id="topSellers">
-            <div class="mt-52">
-                <h2 class="text-center text-7xl middleTitles">Top sellers</h2>
-            </div>
-            <div class="flex flex-wrap justify-evenly items-center">
-                <div class="rounded-3xl productPreview">
-                    <a href=""><img src="" alt=""></a>
-                </div>
+        <div class="pl-3 mt-20">
+            <h1 class="text-3xl md:text-6xl">Sign Up</h1>
+        </div>
+        <section id="signUpSection" class="mt-20 text-[--black-50]">
+            <div class="flex justify-center w-full">
+                <form id="signUpForm">
+                    <div class="flex flex-col justify-center items-center gap-6 h-fit w-full rounded-3xl bg-[--black-800] py-10">
+                        <h2 class="text-left text-wrap px-5 text-lg md:text-3xl">Please enter what will be your user name and password.</h2>
+                        <p>Enter user name without inner spaces and password needs to be 8-16 characters long.</p>
+                        <div class="flex gap-5 mb-5">
+                            <div class="logContainer relative">
+                                <input class="w-96 h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="text" id="registerUserName" name="username" required>
+                                <label for="username" class="absolute top-[.4rem] left-3 text-lg">User Name</label>
+                            </div>
+                            <div class="logContainer relative">
+                                <input class="w-96 h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="password" id="registerPassword" name="password" required>
+                                <label for="password" class="absolute top-[.4rem] left-3 text-lg">Password</label>
+                            </div>
+                        </div>
+                        <div class="logContainer relative mb-6">
+                            <input class="w-96 h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="password" id="confirmPassword" name="password" required>
+                            <label for="password" class="absolute top-[.4rem] left-3 text-lg">Confirm Password</label>
+                        </div>
+                        <h2 class="px-5 text-3xl">Now enter your email address</h2>
+                        <div class="flex gap-5 mb-5">
+                            <div class="logContainer relative">
+                                <input class="w-96 h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="email" id="registerMail" name="mail" required>
+                                <label for="mail" class="absolute top-[.4rem] left-3 text-lg">E-mail</label>
+                            </div>
+                            <div class="logContainer relative">
+                                <input class="w-96 h-[40px] rounded-3xl bg-[--black-400] p-1 pl-4" type="email" id="confirmMail" name="mail" required>
+                                <label for="mail" class="absolute top-[.4rem] left-3 text-lg">Confirm E-mail</label>
+                            </div>
+                        </div>
+                        <button class="text-xl mainBtn" type="button" onclick="signUp()">Sign Up</button>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
     <footer>
 
     </footer>
-    <script defer src="./js/main.js"></script>
+    <script defer src="../js/main.js"></script>
 </body>
 </html>

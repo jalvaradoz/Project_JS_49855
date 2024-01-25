@@ -248,20 +248,27 @@ body{
     animation: overAnimation .5s linear;
 }
 #cartOverlay{
-    .mainBtn {
-        width: 180px;
-        height: 50px;
-        position: absolute;
-    }
-    .cancelBtn {
-        width: 150px;
-        height: 50px;
-        .icon {
-            transform: translateX(50px) translateY(0);
+    #cart{
+        border-top-left-radius: 4rem;
+        border-bottom-left-radius: 4rem;
+        animation: cartAnimation .5s linear;
+        h2{
+            font-family: var(--cursive);
         }
-        &:hover {
+        .mainBtn {
+            width: 180px;
+            height: 50px;
+        }
+        .cancelBtn {
+            width: 180px;
+            height: 50px;
             .icon {
-                transform: translateX(0);
+                transform: translateX(50px) translateY(0);
+            }
+            &:hover {
+                .icon {
+                    transform: translateX(0);
+                }
             }
         }
     }
@@ -285,6 +292,7 @@ body{
         color: var(--black-50);
     }
     input {
+        color: var(--black-50);
         outline: none;
         transition: all .5s ease;
         &:hover{
@@ -310,19 +318,15 @@ body{
         }
     }
 }
-#cart{
-    border-top-left-radius: 4rem;
-    border-bottom-left-radius: 4rem;
-    animation: cartAnimation .5s linear;
-    h2{
-        font-family: var(--cursive);
-    }
-}
 @keyframes cartAnimation {
     0%{right: -100%;}
     100%{right:0;}
 }
-
+@media screen and (max-width: 640px){
+    #cart{
+        border-radius: 2rem;
+    }
+}
 
 /*------main-------- */
 
@@ -355,9 +359,11 @@ body{
 }
 
 
+/*---------------Sign up page---------------*/
 
-
-
+.isInvalid{
+    border: 2px solid rgb(173, 23, 23);
+}
 
 
 
