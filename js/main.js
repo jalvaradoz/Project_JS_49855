@@ -82,7 +82,7 @@ let signUp = function (){
         }
         while(userPassword.length < 5){
             alert("Please enter a valid password, needs to be at least 5 characters long")
-            userPassword = prompt("Enter your Password")
+            userPassword = prompt("Enter your Password, at least 5 characters long")
         }
         userPassword = userPassword.trim()
     
