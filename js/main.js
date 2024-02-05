@@ -88,6 +88,7 @@ themeSwitch.checked = checkbox === 'checked'
 
 let switchValidationUser = document.getElementById('switchValidationUser')
 let cartOverlay = document.getElementById('cartOverlay')
+let searchOverlay = document.getElementById('searchOverlay')
 
 function toggleVisibility(element){
     element.classList.toggle('hidden')
@@ -101,6 +102,12 @@ let cartButton = document.getElementById('cartButton').addEventListener('click',
 })
 document.getElementById('closeCart').addEventListener('click', ()=>{
     toggleVisibility(cartOverlay)
+})
+document.getElementById('searchIcon').addEventListener('click', ()=>{
+    toggleVisibility(searchOverlay)
+})
+document.getElementById('closeSearchBtn').addEventListener('click', ()=>{
+    toggleVisibility(searchOverlay)
 })
 
 
@@ -156,7 +163,7 @@ document.getElementById('loginButton').addEventListener('click', async()=>{
         }else if ((userName === validation.name || userName === validation.email) && userPassword === validation.password) {
             toggleVisibility(switchValidationUser)
 
-            const confirmLogin = await customConfirm(`Log In successful    Welcome ${userName} !`, 'Would you like to stay signed in?')()
+            const confirmLogin = await customConfirm(`Log In successful<br>Welcome ${userName} !`, 'Would you like to stay signed in?')()
 
             confirmLogin ? validateLogin = localStorage.setItem('user',validation.name) : validateLogin = sessionStorage.setItem('user',validation.name)
 
@@ -389,8 +396,6 @@ let addToCart = ()=> {
     subTotalCart.innerText = `$${subTotal}`
     itemsNumber.innerText =`${total}`
 }
-
-
 
 
 /*---------------------------------------------------------------*/

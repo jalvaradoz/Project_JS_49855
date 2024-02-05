@@ -20,24 +20,19 @@
                 <input id="themeSwitch" type="checkbox" name="checkbox" class="themeSwitch relative w-[70px] h-[31px] appearance-none bg-[color:var(--black-950)] bg-cover bg-no-repeat transition-[background-image] duration-[0.7s] ease-[ease-in-out] cursor-pointer overflow-hidden  m-0 rounded-[25px] checked:bg-[rgb(0,195,255)] checked:bg-cover checked:transition-[background-image] checked:duration-[1s] checked:ease-[ease-in-out] checked:after:animate-[on_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] checked:after:shadow-[inset_-5px_-5px_4px_rgba(53,53,53,0.3)] checked:before:content-[''] checked:before:w-[15px] checked:before:h-[15px] checked:before:absolute checked:before:origin-[53px_10px] checked:before:bg-transparent checked:before:shadow-[5px_-1px_0px_#fff] checked:before:blur-none checked:before:animate-[sun_0.5s_forwards_ease] checked:before:rounded-[50%] checked:before:left-2.5 checked:before:top-[5px] after:content-[''] after:w-5 after:h-5 after:bg-white after:absolute after:translate-x-0 after:animate-[off_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] after:shadow-[inset_5px_-5px_4px_rgba(53,53,53,0.3)] after:rounded-[50%] after:left-2 after:top-[5px] before:content-[''] before:w-[15px] before:h-[15px] before:absolute before:blur-[1px] before:bg-[#f5daaa] before:shadow-[0px_0px_10px_#f5deb4,0px_0px_20px_#f5deb4,0px_0px_30px_#f5deb4,inset_0px_0px_2px_#efd3a3] before:origin-[53px_10px] before:animate-[moon_0.5s_forwards_ease] before:rounded-[50%] before:-left-10 before:top-[5px]">
             </div>
             <a href="./index.html" class="absolute left-2/4 top-9 -translate-x-2/4 -translate-y-2/4 text-[color:var(--black-50)] [font-family:var(--cursive)] mainLogo sm:text-3xl md:text-5xl xl:text-6xl tracking-wider">Alter Jewelry</a>
-            <div class="absolute top-3 right-32">
-                <div class="input-wrapper flex items-center justify-center gap-[15px] relative">
-                    <button class="icon flex items-center justify-center absolute cursor-pointer w-[50px] h-[50px] [outline:none] [pointer-events:painted] bg-transparent transition-[0.2s] duration-[linear] rounded-[2rem] right-0 hover:bg-[color:var(--black-400)] hover:shadow-[var(--box-black)]"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px" stroke="#b0b0b0">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#b0b0b0" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
-                            </path>
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"  d="M22 22L20 20">
-                            </path>
-                        </svg>
-                    </button>
-                    <input placeholder="search" class="input h-[50px] w-[50px] [outline:none] transition-[0.5s] duration-[ease-in-out] bg-transparent border border-[color:var(--black-800)] pr-10 p-2.5 rounded-[50%] border-solid focus:shadow-none focus:w-[250px] focus:bg-transparent focus:border-[color:var(--black-50)] focus:transition-all focus:duration-[0.3s] focus:ease-[ease-in-out] focus:pl-[19px] focus:rounded-[2rem] focus:border-2 focus:border-solid" name="search" type="search">
-                </div>
-            </div>
             <div>
+                <button class="userIcon searchIcon absolute" id="searchIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px" stroke="#b0b0b0">
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#b0b0b0" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
+                        </path>
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"  d="M22 22L20 20">
+                        </path>
+                    </svg>
+                </button>
                 <button class="userIcon absolute" id="userButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </button>
-                <button class="userIcon cartIcon absolute right-1" id="cartButton">
+                <button class="userIcon cartIcon absolute" id="cartButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>
                     <span class="text-[.65rem] bg-[--black-400] rounded-full py-[.20rem] px-[.40rem] absolute -bottom-1 left-0" id="itemsNumber">0</span>
                 </button>
@@ -75,7 +70,6 @@
                 <h2 class="text-center text-4xl sm:text-5xl my-7 sm:ml-4">Shopping Cart</h2>
                 <div class="sm:ml-4 flex flex-col justify-between h-[88%] sm:h-[92%]">
                     <div class="flex flex-col gap-5 h-[90%] p-5 overflow-auto" id="cartProductsAdded">
-
                     </div>
                     <section class="cartFooter min-h-fit">
                         <div class="flex justify-between items-center p-10">
@@ -92,7 +86,7 @@
                 </div>
         </div>
         </section>
-        <section id="headerAndNav">
+        <section id="nav">
             <div class="imgDivClip">
                 <img src="./assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
             </div>
@@ -108,89 +102,452 @@
                 </nav>
             </div>
         </section>
-        <section id="mainHightLight">
-            <div class="bgImageDiv">
-                <div class="mt-52 relative mainBgImage rounded-3xl">
-                    <h1 class="text-8xl text-center absolute top-20 left-14 text-wrap w-10 leading-[8rem] text-[--black-700] middleTitles">New Collections available</h1>
+        <section id="searchOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50 overflow-hidden">
+            <div id="logOverlay" class="fixed top-0 left-0 w-full h-full z-50">
+                <div id="logFormContainer" class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 py-8 px-20 rounded-3xl max-w-full">
+                    <div class="relative flex flex-col">
+                        <label class="text-lg text-center mb-3 text-[--black-50]">Search</label>
+                        <input type="search" class="h-[40px] rounded-3xl bg-[--black-500] p-1 pl-4 focus:border-2 focus:border-black outline-none transition duration-500 text-[--black-50]" id="searchBar" name="search">
+                        <button class="closeSearchBtn" id="closeSearchBtn">
+                            <span class="X"></span>
+                            <span class="Y"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="topSellers">
-            <div class="mt-52">
-                <h2 class="text-center text-7xl middleTitles">Top sellers</h2>
-            </div>
-            <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
-                <div class="productPreview">
-                    <div class="imageContainer">
-                        <img class="mainImage" src="./assets/img/products/artemisEarring/artemis-earring-220914_1200x.webp" alt="productMainImage">
-                        <img class="backImage" src="./assets/img/products/artemisEarring/artemis-earring-745518_1200x.webp" alt="productBackImage">
-                        <button class="CartBtn">
-                            <span class="IconContainer"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <p class="text">Add to Cart</p>
-                        </button>
+        <section id="switchMainPage">
+            <section id="main">
+                <section id="mainHightLight">
+                    <div class="bgImageDiv">
+                        <div class="mt-52 relative mainBgImage rounded-3xl">
+                            <h1 class="text-8xl text-center absolute top-20 left-14 text-wrap w-10 leading-[8rem] text-[--black-700] middleTitles">New Collections available</h1>
+                        </div>
                     </div>
-                    <h3 class="productTitle">Artemis Ear ring</h3>
-                    <p class="productPrice"><span>$</span>550.00</p>
-                </div>
-                <div class="productPreview" >
-                    <div class="imageContainer">
-                        <img class="mainImage" src="./assets/img/products/oliveBranch/olive-branch-earring-630412_1200x.webp" alt="productMainImage">
-                        <img class="backImage" src="./assets/img/products/oliveBranch/olive-branch-earring-578402_1200x.webp" alt="productBackImage">
-                        <button class="CartBtn">
-                            <span class="IconContainer"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
-                                    </path>
-                                </svg>
-                            </span>
-                        <p class="text">Add to Cart</p>
-                        </button>
+                </section>
+                <section id="topSellers">
+                    <div class="mt-36">
+                        <h2 class="text-center text-7xl middleTitles">Top sellers</h2>
                     </div>
-                    <h3 class="productTitle">Olive Branch Ear ring</h3>
-                    <p class="productPrice"><span>$</span>899.00</p>
-                </div>
-                <div class="productPreview">
-                    <div class="imageContainer">
-                        <img class="mainImage" src="./assets/img/products/portalRing/portal-ring-853169_1200x.webp" alt="productMainImage">
-                        <img class="backImage" src="./assets/img/products/portalRing/portal-ring-786573_1200x.webp" alt="productBackImage">
-                        <button class="CartBtn">
-                            <span class="IconContainer"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
-                                    </path>
-                                </svg>
-                            </span>
-                        <p class="text">Add to Cart</p>
-                        </button>
+                    <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/artemisEarring/artemis-earring-220914_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/artemisEarring/artemis-earring-745518_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Artemis Ear ring</h3>
+                            <p class="productPrice"><span>$</span>550.00</p>
+                        </div>
+                        <div class="productPreview" >
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/oliveBranch/olive-branch-earring-630412_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/oliveBranch/olive-branch-earring-578402_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Olive Branch Ear ring</h3>
+                            <p class="productPrice"><span>$</span>899.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/portalRing/portal-ring-853169_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/portalRing/portal-ring-786573_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Portal ring</h3>
+                            <p class="productPrice"><span>$</span>200.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/zeusRing/zeus-ring-662420_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/zeusRing/zeus-ring-977030_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Zeus ring</h3>
+                            <p class="productPrice"><span>$</span>200.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/blackCorvusRing/black-corvus-ring-786131_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/blackCorvusRing/black-corvus-ring-538454_1200x.jpg" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Black Corvus Ring</h3>
+                            <p class="productPrice"><span>$</span>899.99</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/apolloRing/apollo-ring-final-sale-720953_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/apolloRing/apollo-ring-final-sale-471898_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Apollo ring</h3>
+                            <p class="productPrice"><span>$</span>699.00</p>
+                        </div>
                     </div>
-                    <h3 class="productTitle">Portal ring</h3>
-                    <p class="productPrice"><span>$</span>200.00</p>
-                </div>
-                <div class="productPreview">
-                    <div class="imageContainer">
-                        <img class="mainImage" src="./assets/img/products/zeusRing/zeus-ring-662420_1200x.webp" alt="productMainImage">
-                        <img class="backImage" src="./assets/img/products/zeusRing/zeus-ring-977030_1200x.webp" alt="productBackImage">
-                        <button class="CartBtn">
-                            <span class="IconContainer"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
-                                    </path>
-                                </svg>
-                            </span>
-                        <p class="text">Add to Cart</p>
-                        </button>
+                </section>
+                <section id="faun" class="my-40">
+                    <div class="mainBanners">
+                        <img src="./assets/img/banners/faunMain.webp" alt="faunCollection">
                     </div>
-                    <h3 class="productTitle">Zeus ring</h3>
-                    <p class="productPrice"><span>$</span>200.00</p>
-                </div>
-            </div>
+                    <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/capereSidusPendant/capere-sidus-pendant-i-425825_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/capereSidusPendant/capere-sidus-pendant-i-545882_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Capere Sidus Pendant</h3>
+                            <p class="productPrice"><span>$</span>1599.50</p>
+                        </div>
+                        <div class="productPreview" >
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/coralCrown/coral-crown-ring-784374_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/coralCrown/coral-crown-ring-170700_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Coral Crown ring</h3>
+                            <p class="productPrice"><span>$</span>459.20</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/cristalCrown/crystal-crown-ring-986645_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/cristalCrown/crystal-crown-ring-290739_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Crystal Crown ring</h3>
+                            <p class="productPrice"><span>$</span>200.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/doeRing/doe-ring-918083_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/doeRing/doe-ring-531134_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Doe ring</h3>
+                            <p class="productPrice"><span>$</span>1500.00</p>
+                        </div>
+                        <div class="w-full flex justify-center">
+                            <a href="./pages/collections.html"><span class="text-2xl bg-amber-500 rounded-3xl p-2 px-6 hover:bg-amber-600 transition duration-500 ease-in-out">See more</span></a>
+                        </div>
+                    </div>
+                </section>
+                <section id="siren" class="my-40">
+                    <div class="mainBanners">
+                        <img src="./assets/img/banners/sirenMain.webp" alt="sirenCollection">
+                    </div>
+                    <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/eonic/doric-earring-387803_1600x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/eonic/doric-earring-948154_1600x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Eonic ear ring</h3>
+                            <p class="productPrice"><span>$</span>130.00</p>
+                        </div>
+                        <div class="productPreview" >
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/flowRing/flow-ring-695851_1600x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/flowRing/flow-ring-874385_1600x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Flow ring</h3>
+                            <p class="productPrice"><span>$</span>200.20</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/meda/medea-ring-305638_1600x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/meda/medea-ring-134661_1600x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Meda ring</h3>
+                            <p class="productPrice"><span>$</span>460.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/medusaPending/medusa-shield-pendant-black-148033_1600x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/medusaPending/medusa-shield-pendant-black-776527_1600x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Medusa Pendant</h3>
+                            <p class="productPrice"><span>$</span>2100.00</p>
+                        </div>
+                        <div class="w-full flex justify-center">
+                            <a href="./pages/collections.html"><span class="text-2xl bg-slate-400 rounded-3xl p-2 px-6 hover:bg-slate-500 transition duration-500 ease-in-out">See more</span></a>
+                        </div>
+                    </div>
+                </section>
+                <section id="ghost" class="my-40">
+                    <div class="mainBanners">
+                        <img src="./assets/img/banners/ghostMain.webp" alt="faunCollection">
+                    </div>
+                    <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/naraRing/nara-ring-887420_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/naraRing/nara-ring-691688_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Nara Ring</h3>
+                            <p class="productPrice"><span>$</span>899.00</p>
+                        </div>
+                        <div class="productPreview" >
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/pantherRing/panther-ring-743268_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/pantherRing/panther-ring-488771_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Panther ring</h3>
+                            <p class="productPrice"><span>$</span>550.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/pearlCrownRing/pearl-crown-ring-white-757542_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/pearlCrownRing/pearl-crown-ring-white-397515_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Pearl Crown ring</h3>
+                            <p class="productPrice"><span>$</span>999.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/blackLyreChoker/black-lyre-choker-435371_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/blackLyreChoker/black-lyre-choker-778390_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Black Lyre Choker</h3>
+                            <p class="productPrice"><span>$</span>3200.00</p>
+                        </div>
+                        <div class="w-full flex justify-center">
+                            <a href="./pages/collections.html"><span class="text-2xl bg-indigo-400 rounded-3xl p-2 px-6 hover:bg-indigo-500 transition duration-500 ease-in-out">See more</span></a>
+                        </div>
+                    </div>
+                </section>
+                <section id="vampire" class="my-40">
+                    <div class="mainBanners">
+                        <img src="./assets/img/banners/vampireMain.webp" alt="faunCollection">
+                    </div>
+                    <div class="flex flex-wrap gap-16 justify-center items-center my-24 mx-7 max-w-full h-fit">
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/marsRing/mars-ring-860766_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/marsRing/mars-ring-108497_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Mars Ring</h3>
+                            <p class="productPrice"><span>$</span>1680.00</p>
+                        </div>
+                        <div class="productPreview" >
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/roseSkullPendant/rose-skull-pendant-771410_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/roseSkullPendant/rose-skull-pendant-278885_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Rose Skull Pendant <br>(Limited Edition)</h3>
+                            <p class="productPrice"><span>$</span>3500.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/antlerPendant/antler-pendant-587980_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/antlerPendant/antler-pendant-984839_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Antler Pendant</h3>
+                            <p class="productPrice"><span>$</span>1200.00</p>
+                        </div>
+                        <div class="productPreview">
+                            <div class="imageContainer">
+                                <img class="mainImage" src="./assets/img/products/ulmerRing/ulmer-ring-red-695760_1200x.webp" alt="productMainImage">
+                                <img class="backImage" src="./assets/img/products/ulmerRing/ulmer-ring-red-949098_1200x.webp" alt="productBackImage">
+                                <button class="CartBtn">
+                                    <span class="IconContainer"> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                <p class="text">Add to Cart</p>
+                                </button>
+                            </div>
+                            <h3 class="productTitle">Ulmer Ring</h3>
+                            <p class="productPrice"><span>$</span>459.90</p>
+                        </div>
+                        <div class="w-full flex justify-center">
+                            <a href="./pages/collections.html"><span class="text-2xl bg-red-600 rounded-3xl p-2 px-6 hover:bg-red-700 transition duration-500 ease-in-out">See more</span></a>
+                        </div>
+                    </div>
+                </section>
+            </section>
         </section>
-
         <!-- test -->
         
         
