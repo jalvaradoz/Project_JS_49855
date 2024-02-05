@@ -20,20 +20,15 @@
                 <input id="themeSwitch" type="checkbox" name="checkbox" class="themeSwitch relative w-[70px] h-[31px] appearance-none bg-[color:var(--black-950)] bg-cover bg-no-repeat transition-[background-image] duration-[0.7s] ease-[ease-in-out] cursor-pointer overflow-hidden  m-0 rounded-[25px] checked:bg-[rgb(0,195,255)] checked:bg-cover checked:transition-[background-image] checked:duration-[1s] checked:ease-[ease-in-out] checked:after:animate-[on_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] checked:after:shadow-[inset_-5px_-5px_4px_rgba(53,53,53,0.3)] checked:before:content-[''] checked:before:w-[15px] checked:before:h-[15px] checked:before:absolute checked:before:origin-[53px_10px] checked:before:bg-transparent checked:before:shadow-[5px_-1px_0px_#fff] checked:before:blur-none checked:before:animate-[sun_0.5s_forwards_ease] checked:before:rounded-[50%] checked:before:left-2.5 checked:before:top-[5px] after:content-[''] after:w-5 after:h-5 after:bg-white after:absolute after:translate-x-0 after:animate-[off_0.5s_forwards_cubic-bezier(.8,0.5,0.2,1.4)] after:shadow-[inset_5px_-5px_4px_rgba(53,53,53,0.3)] after:rounded-[50%] after:left-2 after:top-[5px] before:content-[''] before:w-[15px] before:h-[15px] before:absolute before:blur-[1px] before:bg-[#f5daaa] before:shadow-[0px_0px_10px_#f5deb4,0px_0px_20px_#f5deb4,0px_0px_30px_#f5deb4,inset_0px_0px_2px_#efd3a3] before:origin-[53px_10px] before:animate-[moon_0.5s_forwards_ease] before:rounded-[50%] before:-left-10 before:top-[5px]">
             </div>
             <a href="../index.html" class="absolute left-2/4 top-9 -translate-x-2/4 -translate-y-2/4 text-[color:var(--black-50)] [font-family:var(--cursive)] mainLogo sm:text-3xl md:text-5xl xl:text-6xl tracking-wider">Alter Jewelry</a>
-            <div class="absolute top-3 right-32">
-                <div class="input-wrapper flex items-center justify-center gap-[15px] relative">
-                    <button class="icon flex items-center justify-center absolute cursor-pointer w-[50px] h-[50px] [outline:none] [pointer-events:painted] bg-transparent transition-[0.2s] duration-[linear] rounded-[2rem] right-0 hover:bg-[color:var(--black-400)] hover:shadow-[var(--box-black)]"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px" stroke="#b0b0b0">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#b0b0b0" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
-                            </path>
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"  d="M22 22L20 20">
-                            </path>
-                        </svg>
-                    </button>
-                    <input placeholder="search" class="input h-[50px] w-[50px] [outline:none] transition-[0.5s] duration-[ease-in-out] bg-transparent border border-[color:var(--black-800)] pr-10 p-2.5 rounded-[50%] border-solid focus:shadow-none focus:w-[250px] focus:bg-transparent focus:border-[color:var(--black-50)] focus:transition-all focus:duration-[0.3s] focus:ease-[ease-in-out] focus:pl-[19px] focus:rounded-[2rem] focus:border-2 focus:border-solid" name="search" type="search">
-                </div>
-            </div>
             <div>
+                <button class="userIcon searchIcon absolute" id="searchIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px" stroke="#b0b0b0">
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#b0b0b0" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
+                        </path>
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"  d="M22 22L20 20">
+                        </path>
+                    </svg>
+                </button>
                 <button class="userIcon absolute" id="userButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </button>
@@ -92,7 +87,7 @@
                 </div>
         </div>
         </section>
-        <section id="headerAndNav">
+        <section id="nav">
             <div class="imgDivClip">
                 <img src="../assets/img/logo.png" alt="mainLogo" class="absolute top-48 left-2/4 h-[250px] -translate-x-2/4 -translate-y-2/4 w-auto">
             </div>
@@ -106,6 +101,20 @@
                         <li class="-translate-y-[6.7rem]"><a href=".contact.html">Contact</a></li>
                     </ul>
                 </nav>
+            </div>
+        </section>
+        <section id="searchOverlay" class="hidden fixed top-0 left-0 w-full h-full z-50 overflow-hidden">
+            <div id="logOverlay" class="fixed top-0 left-0 w-full h-full z-50">
+                <div id="logFormContainer" class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 py-8 px-20 rounded-3xl max-w-full">
+                    <div class="relative flex flex-col">
+                        <label class="text-lg text-center mb-3 text-[--black-50]">Search</label>
+                        <input type="search" class="h-[40px] rounded-3xl bg-[--black-500] p-1 pl-4 focus:border-2 focus:border-black outline-none transition duration-500 text-[--black-50]" id="searchBar" name="search">
+                        <button class="closeSearchBtn" id="closeSearchBtn">
+                            <span class="X"></span>
+                            <span class="Y"></span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
         <div class="pl-3 mt-20">
