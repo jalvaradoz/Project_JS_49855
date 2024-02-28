@@ -1,66 +1,38 @@
 /*-------------------------------- Custom modals ----------------------------------------- */
 
-let customAlert = function(title,string){
-    return async ()=>{
-        return new Promise((resolve, reject) => {
-            
-            let alertContainer = document.createElement('div')
-        
-            alertContainer.innerHTML = `
-            <div class="block fixed top-0 left-0 w-full h-full z-50 overlayCreated">
-                <div class="alertShadow absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 flex flex-col gap-3 rounded-3xl py-5 px-10 h-fit w-[500px] max-w-full">
-                    <div class="flex flex-col gap-3 h-full w-full">
-                        <h3 class="text-center text-lg mb-6">${title}</h3>
-                        <p class="text-wrap mb-6">${string}</p>
-                        <div class="relative">
-                            <button id = "alertButton" class="alertButton float-end">Accept</button>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-            document.body.appendChild(alertContainer)
-
-            alertContainer ? (document.getElementById('alertButton').addEventListener('click', ()=>{
-                document.body.removeChild(alertContainer)
-            }), resolve(true)) : reject(new Error('Error while creating modal'))
-            })
+const Toast = Swal.mixin({
+    customClass: {
+        popup: 'rounded-3xl mb-5 ml-1',
+    },
+    toast: true,
+    position: "bottom-start",
+    showConfirmButton: false,
+    background: "#4f4f4f",
+    color: "#f6f6f6",
+    padding: '20px 20px 20px 20px',
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
     }
-}
+})
 
-let customConfirm = function(title,string){
-    return async ()=>{
-        return new Promise((resolve, reject) => {
-
-            let alertContainer = document.createElement('div')
-        
-            alertContainer.innerHTML = `
-            <div class="block fixed top-0 left-0 w-full h-full z-50 overlayCreated">
-                <div class="alertShadow absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 flex flex-col gap-3 rounded-3xl py-5 px-10 h-fit w-[500px] max-w-full">
-                    <div class="flex flex-col gap-3 h-full w-full">
-                        <h3 class="text-center text-lg mb-6">${title}</h3>
-                        <p class="text-wrap mb-6">${string}</p>
-                        <div class="flex gap-2 justify-end">
-                            <button id = "confirmButton" class="alertButton float-end">Accept</button>
-                            <button id = "denyButton" class="alertButton denyButton float-end">Deny</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `
-            document.body.appendChild(alertContainer)
-    
-            alertContainer ? (document.getElementById('confirmButton').addEventListener('click', ()=>{
-                document.body.removeChild(alertContainer)
-                resolve(true)
-            }), document.getElementById('denyButton').addEventListener('click', ()=>{
-                document.body.removeChild(alertContainer)
-                resolve(false)
-            }) ): reject(new Error('Error while creating modal'))
-            })
-    }
-}
-
-
+const customModal = Swal.mixin({
+    customClass: {
+        confirmButton: "alertButton",
+        cancelButton: "alertButton denyButton",
+        popup: 'rounded-3xl',
+    },
+    buttonsStyling: false,
+    background: "#454545",
+    color: "#f6f6f6",
+    showCancelButton: true,
+    confirmButtonText: "Accept",
+    cancelButtonText: "Deny",
+    icon: "question",
+    padding: '0 0 2rem 0',
+})
 
 
 /*-------------------------- Header ------------------------------*/
@@ -103,9 +75,6 @@ let cartButton = document.getElementById('cartButton').addEventListener('click',
 document.getElementById('closeCart').addEventListener('click', ()=>{
     toggleVisibility(cartOverlay)
 })
-document.getElementById('searchIcon').addEventListener('click', ()=>{
-    toggleVisibility(searchOverlay)
-})
 document.getElementById('closeSearchBtn').addEventListener('click', ()=>{
     toggleVisibility(searchOverlay)
 })
@@ -135,7 +104,7 @@ let userButton = document.getElementById('userButton').addEventListener('click',
                 <h2 class="text-center font-medium text-base mb-3">${validateLogin.toUpperCase()}</h2>
                 <button class="cancelBtn logoutBtn text-base relative" type="button" id="closeValidatedUser"><span class="text absolute top-[.46rem] left-4">Log Out</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
             </div>
-        </div> `) 
+        </div> `)  
     validateLogin && document.getElementById('closeValidatedUser').addEventListener('click', ()=>{
         sessionStorage.removeItem('user')
         localStorage.removeItem('user')
@@ -144,12 +113,16 @@ let userButton = document.getElementById('userButton').addEventListener('click',
 })
 
 
+
 /*------------- Log In ------------ */
 
 // Este bloque hace validacion de usuario iterando sobre el array users y verificando si un usuario registrado ya existe; con una funcion asincrona para esperar la respuesta del modal, al mismo tiempo evalua si hay un usuario registrado en el local storage y lo convierte de vuelta a objeto para validacion posterior
 
 let userExists = localStorage.getItem('localUser')
-let userBacktoObject = userExists && JSON.parse(userExists); users.push(userBacktoObject)
+let userBacktoObject = userExists ? JSON.parse(userExists) : null
+if (userBacktoObject) {
+    users.push(userBacktoObject)
+}
 
 document.getElementById('loginButton').addEventListener('click', async()=>{
 
@@ -158,21 +131,47 @@ document.getElementById('loginButton').addEventListener('click', async()=>{
 
     for(let validation of users){
         if (userName.length < 1 || userPassword.length < 1) {
-            await customAlert('Not valid', 'Please enter both user name and password')()
+            toggleVisibility(switchValidationUser)
+            await customModal.fire({
+                title: 'Not valid',
+                text: 'Please enter both user name and password',
+                icon: 'error',
+                showCancelButton: false,
+            })
+            toggleVisibility(switchValidationUser)
             return
         }else if ((userName === validation.name || userName === validation.email) && userPassword === validation.password) {
             toggleVisibility(switchValidationUser)
 
-            const confirmLogin = await customConfirm(`Log In successful<br>Welcome ${userName} !`, 'Would you like to stay signed in?')()
-
-            confirmLogin ? validateLogin = localStorage.setItem('user',validation.name) : validateLogin = sessionStorage.setItem('user',validation.name)
-
+            const confirmLogin = await customModal.fire({
+                title: `Log In successful,  Welcome ${userName} !`,
+                text: 'Would you like to stay signed in?',
+                icon: 'success',
+            })
+            if (confirmLogin.isConfirmed) {
+                localStorage.setItem('user',validation.name)
+            } else if (confirmLogin.dismiss) {
+                sessionStorage.setItem('user',validation.name)
+            }
+            await customModal.fire({
+                title: '',
+                text: 'Enjoy your time on Alter Jewelry',
+                icon: '',
+                showCancelButton: false,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            })
             location.reload()
             return
         }
     }
-
-    await customAlert('Error', 'User name or password incorrect, Try again')()
+    await customModal.fire({
+        title: 'Error',
+        text: 'User name or password incorrect, Try again',
+        icon: 'error',
+        showCancelButton: false,
+    })
 })
 
 
@@ -256,11 +255,11 @@ let emailValidated = function() {
 let sigupPage = document.getElementById('signUpSection')
 
 if(sigupPage){
-    registerUserName.addEventListener('change', userValidated)
-    registerPassword.addEventListener('change', passwordValidated)
-    confirmPassword.addEventListener('change', passwordValidated)
-    registerMail.addEventListener('change', emailValidated)
-    confirmMail.addEventListener('change', emailValidated)
+    registerUserName.addEventListener('blur', userValidated)
+    registerPassword.addEventListener('blur', passwordValidated)
+    confirmPassword.addEventListener('blur', passwordValidated)
+    registerMail.addEventListener('blur', emailValidated)
+    confirmMail.addEventListener('blur', emailValidated)
 
     document.getElementById('submitSignUP').addEventListener('click', async () =>{
     
@@ -272,12 +271,21 @@ if(sigupPage){
         let signConditions = document.getElementById('signConditions')
         
         if (!userValidated() || !passwordValidated() || !emailValidated()) {
-            await customAlert('Error while creating account', 'Please make sure all fields are entered correctly')()
+            await customModal.fire({
+                title: 'Error while creating account',
+                text: 'Please make sure all fields are entered correctly',
+                icon: 'error',
+                showCancelButton: false,
+            })
             signConditions.classList.add('text-red-400','font-bold')
             return
         }else if (users.some(validate=> validate.name === userValue) || users.some(validate=> validate.email === mailValue)) {
-            await customConfirm('Error while creating account', 'User name already exists. Would you like to Log In?')()
-            customConfirm && toggleVisibility(switchValidationUser)
+            let confirm = await customModal.fire({
+                title: 'Account already exists',
+                text: 'User name already exists. Would you like to Log In?',
+                icon: 'info',
+            })
+            confirm.isConfirmed ? toggleVisibility(switchValidationUser) : false 
             return
         }
         let setNewUser = {name: userValue, password: passwordValue, email: mailValue}
@@ -285,16 +293,16 @@ if(sigupPage){
         localStorage.setItem('localUser', JSON.stringify(setNewUser))
         sessionStorage.setItem('user', userValue)
 
-        await customAlert('Your Account has been created!', `User: ${userValue}<br><br>E-Mail: ${mailValue}<br><br>Password: ${passwordValue}<br><br>You are signed in now !`)()
-
-        location.reload()
-
-        // Agregar aquí la lógica de redireccionamiento
+        await customModal.fire({
+            title: 'Your Account has been created!',
+            html: `User: ${userValue}<br><br>E-Mail: ${mailValue}<br><br>Password: ${passwordValue}<br><br>You are signed in now !`,
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: `Great!`,
+        })
+        window.location.assign("../index.html")
     })
 }
-
-
-
 
 /*------------- CART ------------ */
 
@@ -303,6 +311,8 @@ if(sigupPage){
 let cartProducts = []
 
 const productContainers = document.querySelectorAll('.productPreview')
+const cartFooter = document.getElementById('cartFooter')
+const checkoutBtn = document.getElementById('checkoutBtn')
 
 productContainers.forEach(productContainer => {
     productContainer.addEventListener('click', e => {
@@ -327,20 +337,24 @@ productContainers.forEach(productContainer => {
                     }
                 })
                 cartProducts = [...products]
+                validateLogin ? localStorage.setItem('existingCart', JSON.stringify(cartProducts)) : sessionStorage.setItem('existingCart', JSON.stringify(cartProducts))
+                Toast.fire({ icon: "success", title: `Another ${infoProduct.title} was added to the cart!` })
             }else{
                 cartProducts = [...cartProducts, infoProduct]
-                toggleVisibility(cartOverlay)
+                validateLogin ? localStorage.setItem('existingCart', JSON.stringify(cartProducts)) : sessionStorage.setItem('existingCart', JSON.stringify(cartProducts))
+                Toast.fire({ icon: "success", title: `${infoProduct.title} added to the cart!` })
             }
             addToCart()
         }
     })
 })
 
-// codigo que elimina el producto que sea distinto a cualquier otro producto que pueda haber en el carrito 
+// codigo que elimina el producto que sea distinto a cualquier otro producto que pueda haber en el carrito ademas de actualizar el local storage para el carrito guardado
 
 let cartProductsAdded = document.getElementById('cartProductsAdded')
 const itemsNumber = document.getElementById('itemsNumber')
 const subTotalCart = document.getElementById('subTotalCart')
+const finalPrice = document.getElementById('finalPrice')
 
 cartProductsAdded.addEventListener('click', e => {
     const button = e.target.closest('.bin-button')
@@ -349,9 +363,25 @@ cartProductsAdded.addEventListener('click', e => {
         const productTitle = productToEliminate.querySelector('p').textContent
 
         cartProducts = cartProducts.filter(p => p.title !== productTitle)
+        validateLogin ? localStorage.setItem('existingCart', JSON.stringify(cartProducts)) : sessionStorage.setItem('existingCart', JSON.stringify(cartProducts))
+        Toast.fire({icon: "info", title: 'Product removed'})
         addToCart()
     }
 })
+
+//funcion que calcula el total para usarlo en varias partes del codigo 
+
+function calculateTotal() {
+    let itemsQuantity = 0
+    let subTotalPrice = 0
+
+    cartProducts.forEach(product => {
+        itemsQuantity += product.quantity
+        subTotalPrice += product.quantity * parseFloat(product.price.slice(1))
+    })
+
+    return { itemsQuantity, subTotalPrice }
+}
 
 //codigo que inserta el elemento en el carrito 
 
@@ -359,17 +389,21 @@ let addToCart = ()=> {
 
     cartProductsAdded.innerHTML = ''
 
-    let total = 0
-    let subTotal = 0
+    let { itemsQuantity, subTotalPrice } = calculateTotal()
 
     cartProducts.forEach(product =>{
+
         let addNewProductToTheCart = document.createElement('div')
     
         addNewProductToTheCart.innerHTML = `
         <div class="w-full bg-[--black-500] rounded-3xl relative p-5 father">
             <img src="${product.image}" alt="img" class="w-auto h-[100px] rounded-3xl">
-            <span class="absolute right-8 top-7 font-bold text-[--black-50]">${product.quantity}</span>
-            <p class="absolute left-36 top-7 text-[--black-50] productTitle" >${product.title}</p>
+            <div class="flex items-center absolute right-5 top-7 gap-2">
+                <button class="outline outline-1 outline-white h-[22px] rounded-3xl px-[.29rem]" id="minusQ">-</button>
+                <span class="font-bold text-[--black-50]">${product.quantity}</span>
+                <button class="outline outline-1 outline-white h-[22px] rounded-3xl px-[.29rem]" id="plusQ">+</button>
+            </div>
+            <p class="absolute left-36 top-7 text-[--black-50] productTitle w-[160px]">${product.title}</p>
             <p class="absolute left-36 bottom-8 text-[--black-50]">${product.price}</p>
             <button class="bin-button absolute right-5 bottom-5">
                 <svg class="bin-top" viewBox="0 0 39 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -385,18 +419,132 @@ let addToCart = ()=> {
                     <path d="M21 6V29" stroke="white" stroke-width="4"></path>
                 </svg>
             </button>
-        </div> `
+        </div>`
+
+        // Botones para subir o disminur la cantidad de productos en el carrito 
+        addNewProductToTheCart.querySelector('#plusQ').addEventListener('click', () => {
+            product.quantity++
+            updateCart()
+        })
+
+        addNewProductToTheCart.querySelector('#minusQ').addEventListener('click', () => {
+            if (product.quantity > 1) {
+                product.quantity--
+                updateCart()
+            }
+        })
         
         cartProductsAdded.append(addNewProductToTheCart)
-
-        total += product.quantity
-        subTotal += product.quantity * product.price.slice(1)
     })
 
-    subTotalCart.innerText = `$${subTotal}`
-    itemsNumber.innerText =`${total}`
+    subTotalCart.innerText = `$${subTotalPrice.toFixed(2)}`
+    itemsNumber.innerText = `${itemsQuantity}`
+
+    if (itemsQuantity === 0) {
+        cartFooter.classList.add('hidden')
+        let cartEmpty = document.createElement('div')
+        cartEmpty.innerHTML = `<p class="text-center">Your Cart is Empty</p>`
+        cartProductsAdded.append(cartEmpty)
+        localStorage.removeItem('existingCart')
+        sessionStorage.removeItem('existingCart')
+    } else {
+        cartFooter.classList.remove('hidden')
+    }
+}
+
+function updateCart() {
+    validateLogin ? localStorage.setItem('existingCart', JSON.stringify(cartProducts)) : sessionStorage.setItem('existingCart', JSON.stringify(cartProducts))
+    addToCart()
+}
+
+// Función para cargar los productos del localStorage al cargar la página
+
+const existingCart = localStorage.getItem('existingCart') || sessionStorage.getItem('existingCart')
+if (existingCart) {
+    cartProducts = JSON.parse(existingCart)
+    addToCart()
 }
 
 
 /*---------------------------------------------------------------*/
 
+
+/*------------- CHECKOUT PAYPAL API ------------ */
+
+
+checkoutBtn.addEventListener('click', async()=>{
+    toggleVisibility(cartOverlay)
+
+    let { itemsQuantity, subTotalPrice } = calculateTotal()
+
+    if(itemsQuantity === 0){
+        await customModal.fire({
+            title: 'You can`t check out with the cart empty',
+            text: '',
+            icon: 'info',
+            showCancelButton: false,
+            confirmButtonText: `Ok :(`
+        })
+        return
+    }
+
+    toggleVisibility(paymentOverlay)
+
+    document.getElementById('checkOutItems').innerHTML = `${itemsQuantity}`
+    document.getElementById('checkOutPrice').innerHTML = `$${(subTotalPrice*1.16).toFixed(2)} mxn`
+
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color:  'black',
+            shape:  'pill',
+            label:  'paypal',
+            disableMaxWidth: true
+        },
+        createOrder: function(data, actions){
+            return actions.order.create({
+                purchase_units: [{
+                    amount:{
+                        value: `${(subTotalPrice*1.16).toFixed(2)}`
+                    }
+                }]
+            })
+        },
+        onApprove: function(data, actions){
+            actions.order.capture().then(async function(details){
+                await customModal.fire({
+                    title: 'Payment Successful !',
+                    text: `Authorization ID: ${data.orderID}`,
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonText: `Great!`
+                })
+                toggleVisibility(paymentOverlay)
+                localStorage.removeItem('existingCart')
+                sessionStorage.removeItem('existingCart')
+                location.reload()
+            })
+        },
+        onCancel:function(data){
+            customModal.fire({
+                title: 'Payment Canceled',
+                text: `Order ID: ${data.orderID}`,
+                icon: 'info',
+                showCancelButton: false,
+            })
+        },
+        onError: async function(){
+            await customModal.fire({
+                title: 'Something went wrong',
+                text: 'Please try again',
+                icon: 'error',
+                showCancelButton: false,
+            })
+            location.reload()
+        }
+    }).render('#paypalButtons')
+})
+
+document.getElementById('checkoutCloseBtn').addEventListener('click', ()=>{
+    toggleVisibility(paymentOverlay)
+})
